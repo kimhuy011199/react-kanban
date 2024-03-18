@@ -5,7 +5,7 @@ const Header = () => {
   const handleAddNewTask = () => {};
 
   return (
-    <div className="flex justify-between items-center px-7 py-5">
+    <div className="flex justify-between items-center px-7 py-5 border-b">
       <div className="flex flex-col">
         <h2 className="text-2xl font-bold">Welcome back!</h2>
         <p className="text-muted-foreground">
