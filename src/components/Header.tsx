@@ -1,5 +1,6 @@
 import { Plus } from 'lucide-react';
 import { Button } from './ui/button';
+import NewTodoSheet from './NewTodoSheet';
 
 const Header = () => {
   const handleAddNewTask = () => {};
@@ -13,14 +14,16 @@ const Header = () => {
         </p>
       </div>
       <div>
-        <Button
-          variant="secondary"
-          className="flex gap-1"
-          onClick={handleAddNewTask}
-        >
-          <Plus size={14} strokeWidth={3} />
-          <span>Add new task</span>
-        </Button>
+        <NewTodoSheet>
+          <Button
+            variant="secondary"
+            className="flex gap-1"
+            onClick={handleAddNewTask}
+          >
+            <Plus size={14} strokeWidth={3} />
+            <span>Add new task</span>
+          </Button>
+        </NewTodoSheet>
       </div>
     </div>
   );
