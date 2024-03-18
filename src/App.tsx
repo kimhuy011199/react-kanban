@@ -1,10 +1,15 @@
-import { Button } from './components/ui/button';
+import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
+import Main from '@/components/Main';
 
 function App() {
   return (
-    <div>
-      <h1 className="text-primary">Hello world</h1>
-      <Button>Click me</Button>
+    <div className="flex h-screen w-screen">
+      <Sidebar />
+      <div className="flex flex-col">
+        <Header />
+        <Main />
+      </div>
     </div>
   );
 }
