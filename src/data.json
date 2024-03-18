@@ -1,0 +1,200 @@
+[
+  {
+    "id": "1",
+    "type": "todo",
+    "tasks": [
+      {
+        "id": "1",
+        "label": "Documentation",
+        "title": "Design settings and search pages",
+        "description": "Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.",
+        "deadline": "11/04/2024",
+        "status": "todo",
+        "subtasks": [
+          {
+            "id": "1",
+            "title": "Settings - Account page",
+            "isCompleted": true
+          },
+          {
+            "id": "2",
+            "title": "Settings - Billing page",
+            "isCompleted": true
+          },
+          {
+            "id": "3",
+            "title": "Search page",
+            "isCompleted": false
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "label": "Design",
+        "title": "Create landing page mockup",
+        "description": "Design a visually appealing mockup for the landing page.",
+        "deadline": "25/04/2024",
+        "status": "todo",
+        "subtasks": [
+          {
+            "id": "1",
+            "title": "Sketch initial layout",
+            "isCompleted": false
+          },
+          {
+            "id": "2",
+            "title": "Select color palette",
+            "isCompleted": false
+          },
+          {
+            "id": "3",
+            "title": "Gather feedback",
+            "isCompleted": false
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "label": "Development",
+        "title": "Implement payment gateway",
+        "description": "Integrate a payment gateway for processing online transactions.",
+        "deadline": "20/04/2024",
+        "status": "todo",
+        "subtasks": [
+          {
+            "id": "1",
+            "title": "Research payment options",
+            "isCompleted": false
+          },
+          {
+            "id": "2",
+            "title": "Integrate API",
+            "isCompleted": false
+          },
+          {
+            "id": "3",
+            "title": "Test transaction flow",
+            "isCompleted": false
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "label": "Documentation",
+        "title": "Update API documentation",
+        "description": "Revise and update the API documentation to include new endpoints and features.",
+        "deadline": "05/05/2024",
+        "status": "todo",
+        "subtasks": [
+          {
+            "id": "1",
+            "title": "Review existing documentation",
+            "isCompleted": false
+          },
+          {
+            "id": "2",
+            "title": "Add new endpoints",
+            "isCompleted": false
+          },
+          {
+            "id": "3",
+            "title": "Update code examples",
+            "isCompleted": false
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "label": "Development",
+        "title": "Implement user feedback system",
+        "description": "Integrate a system for collecting and processing user feedback.",
+        "deadline": "15/05/2024",
+        "status": "todo",
+        "subtasks": [
+          {
+            "id": "1",
+            "title": "Design feedback form",
+            "isCompleted": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "type": "doing",
+    "tasks": [
+      {
+        "id": "1",
+        "label": "Development",
+        "title": "Implement user authentication",
+        "description": "Integrate OAuth for user authentication.",
+        "deadline": "15/04/2024",
+        "status": "doing",
+        "subtasks": [
+          {
+            "id": "1",
+            "title": "Set up OAuth provider",
+            "isCompleted": true
+          },
+          {
+            "id": "2",
+            "title": "Implement login flow",
+            "isCompleted": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "type": "done",
+    "tasks": []
+  },
+  {
+    "id": "4",
+    "type": "pending",
+    "tasks": [
+      {
+        "id": "1",
+        "label": "Design",
+        "title": "Revise UI mockups",
+        "description": "Incorporate feedback from stakeholders and refine UI designs.",
+        "deadline": "25/04/2024",
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": "1",
+            "title": "Update homepage layout",
+            "isCompleted": false
+          },
+          {
+            "id": "2",
+            "title": "Adjust color scheme",
+            "isCompleted": false
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "label": "Testing",
+        "title": "Conduct usability testing",
+        "description": "Test the application with real users to gather feedback.",
+        "deadline": "20/04/2024",
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": "1",
+            "title": "Recruit test participants",
+            "isCompleted": true
+          },
+          {
+            "id": "2",
+            "title": "Analyze test results",
+            "isCompleted": true
+          }
+        ]
+      }
+    ]
+  }
+]
