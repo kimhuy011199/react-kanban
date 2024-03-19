@@ -13,6 +13,7 @@ import { CalendarIcon, Dot, ListTodo } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { twMerge } from 'tailwind-merge';
 import SubtasksForm from './SubtasksForm';
+import DeleteTodoDialog from './DeleteTodoDialog';
 
 const DetailTodoSheet = ({
   children,
@@ -58,7 +59,9 @@ const DetailTodoSheet = ({
             <SubtasksForm subtasks={task.subtasks} />
           </div>
         </div>
-        <SheetFooter className="flex gap-2 mt-auto"></SheetFooter>
+        <SheetFooter className="flex gap-2 mt-auto">
+          <DeleteTodoDialog title={task.title} id={task.id} />
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );
