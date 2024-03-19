@@ -8,6 +8,7 @@ import {
 } from './SidebarMenu';
 import ToggleMode from './ToggleMode';
 import { APP_VIEW } from '@/lib/enums';
+import NewTodoSheet from './NewTodoSheet';
 
 interface SidebarProps {
   currentView: APP_VIEW;
@@ -37,12 +38,14 @@ const Sidebar = ({ currentView, setCurrentView }: SidebarProps) => {
           </SidebarMenuItemIcon>
           <SidebarMenuItemContent>Table view</SidebarMenuItemContent>
         </SidebarMenuItem>
-        <SidebarMenuItem>
-          <SidebarMenuItemIcon>
-            <CopyPlus size={18} />
-          </SidebarMenuItemIcon>
-          <SidebarMenuItemContent>Add new task</SidebarMenuItemContent>
-        </SidebarMenuItem>
+        <NewTodoSheet>
+          <SidebarMenuItem>
+            <SidebarMenuItemIcon>
+              <CopyPlus size={18} />
+            </SidebarMenuItemIcon>
+            <SidebarMenuItemContent>Add new task</SidebarMenuItemContent>
+          </SidebarMenuItem>
+        </NewTodoSheet>
         <SidebarMenuItem>
           <SidebarMenuItemIcon>
             <Book size={18} />

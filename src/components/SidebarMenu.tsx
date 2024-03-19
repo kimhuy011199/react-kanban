@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import React from 'react';
 
 const SidebarMenu = ({ children, className, ...props }: any) => {
   return (
@@ -8,27 +9,25 @@ const SidebarMenu = ({ children, className, ...props }: any) => {
   );
 };
 
-const SidebarMenuItem = ({
-  children,
-  className,
-  isActive = false,
-  ...props
-}: any) => {
-  return (
-    <li
-      className={cn(
-        'flex items-center w-full font-medium gap-4 cursor-pointer text-sm px-3 py-3 transition-all text-muted-foreground rounded-md hover:bg-accent',
-        isActive
-          ? 'bg-primary text-white hover:bg-primary hover:text-white'
-          : '',
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </li>
-  );
-};
+const SidebarMenuItem = React.forwardRef<any, any>(
+  ({ children, className, isActive = false, ...props }: any, ref) => {
+    return (
+      <li
+        className={cn(
+          'flex items-center w-full font-medium gap-4 cursor-pointer text-sm px-3 py-3 transition-all text-muted-foreground rounded-md hover:bg-accent',
+          isActive
+            ? 'bg-primary text-white hover:bg-primary hover:text-white'
+            : '',
+          className
+        )}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </li>
+    );
+  }
+);
 
 const SidebarMenuItemContent = ({ children, className, ...props }: any) => {
   return (
