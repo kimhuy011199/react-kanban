@@ -13,7 +13,7 @@ const NewTodoSheet = ({ children }: { children: ReactNode }) => {
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
-      <SheetContent className="sm:max-w-[600px]">
+      <SheetContent className="sm:max-w-[600px] overflow-y-scroll max-h-screen">
         <SheetHeader>
           <SheetTitle>Add New Task</SheetTitle>
           <SheetDescription>

@@ -11,3 +11,5 @@ export const TODO_BADGE_TYPE = [
   { id: 3, label: 'Testing', value: 'testing' },
   { id: 4, label: 'Documentation', value: 'documentation' },
 ];
+
+export const LIMITED_SUBTASKS = 7;

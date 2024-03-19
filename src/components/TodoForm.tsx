@@ -1,6 +1,8 @@
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -19,11 +21,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from './ui/select';
-import { TODO_BADGE_TYPE, TODO_STATUS } from '@/lib/constants';
+import {
+  LIMITED_SUBTASKS,
+  TODO_BADGE_TYPE,
+  TODO_STATUS,
+} from '@/lib/constants';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import { cn } from '@/lib/utils';
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon, Plus, X } from 'lucide-react';
 import { Calendar } from './ui/calendar';
+import { formatCalendarDate } from '@/lib/format-date';
 
 const formSchema = z.object({
   title: z
@@ -40,21 +47,61 @@ const formSchema = z.object({
       message: 'Description must not be longer than 120 characters.',
     })
     .optional(),
+  subtasks: z
+    .array(
+      z.object({
+        id: z.string(),
+        title: z
+          .string()
+          .min(5, {
+            message: 'Title must be at least 5 characters.',
+          })
+          .max(50, {
+            message: 'Title must not be longer than 50 characters.',
+          }),
+        isCompleted: z.boolean(),
+      })
+    )
+    .optional(),
   status: z.string(),
   label: z.string(),
   deadline: z.any(),
 });
 
+const defaultValues = {
+  title: 'Hello world',
+  description: 'Say something about this task',
+  subtasks: [
+    {
+      id: '1',
+      title: 'Hello sub-task',
+      isCompleted: false,
+    },
+  ],
+  status: TODO_STATUS[0].value,
+  label: TODO_BADGE_TYPE[0].value,
+  deadline: new Date('02/18/2024'),
+};
+// const defaultValues = {
+//   title: '',
+//   description: '',
+//   subtasks: [],
+//   status: TODO_STATUS[0].value,
+//   label: TODO_BADGE_TYPE[0].value,
+//   deadline: new Date(),
+// };
+
 const TodoForm = () => {
+  const [calendarOpen, setCalendarOpen] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: '',
-      description: '',
-      status: TODO_STATUS[0].value,
-      label: TODO_BADGE_TYPE[0].value,
-      deadline: '',
-    },
+    defaultValues,
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    name: 'subtasks',
+    control: form.control,
+    keyName: '_id',
   });
 
   const { isSubmitting } = form.formState;
@@ -72,13 +119,9 @@ const TodoForm = () => {
           render={({ field }) => (
             <FormItem className="flex">
               <FormLabel className="min-w-32 mt-5">Title</FormLabel>
-              <div className="flex flex-col w-full gap-2">
+              <div className="flex flex-col w-full gap-1">
                 <FormControl>
-                  <Input
-                    placeholder="Design settings page"
-                    disabled={isSubmitting}
-                    {...field}
-                  />
+                  <Input disabled={isSubmitting} {...field} />
                 </FormControl>
                 <FormMessage />
               </div>
@@ -95,7 +138,6 @@ const TodoForm = () => {
                 <FormControl>
                   <Textarea
                     className="resize-none"
-                    placeholder="Design a visually appealing mockup for the settings page."
                     disabled={isSubmitting}
                     {...field}
                   />
@@ -105,6 +147,52 @@ const TodoForm = () => {
             </FormItem>
           )}
         />
+        <div className="flex pt-2">
+          <FormLabel className="min-w-32 mt-4">Subtasks</FormLabel>
+          <ul className="flex flex-col w-full gap-2">
+            {fields.map((field, index) => (
+              <li key={field._id} className="flex gap-2">
+                <FormField
+                  control={form.control}
+                  name={`subtasks.${index}.title`}
+                  render={({ field }) => (
+                    <FormItem className="space-y-0 w-full">
+                      <FormControl>
+                        <Input disabled={isSubmitting} {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button
+                  variant="ghost"
+                  type="button"
+                  className="p-0 text-muted-foreground hover:bg-transparent"
+                  onClick={() => remove(index)}
+                  disabled={isSubmitting}
+                >
+                  <X />
+                </Button>
+              </li>
+            ))}
+            <Button
+              variant="secondary"
+              type="button"
+              className="flex w-full text-sm"
+              onClick={() =>
+                append({
+                  id: uuidv4(),
+                  title: '',
+                  isCompleted: false,
+                })
+              }
+              disabled={fields?.length > LIMITED_SUBTASKS || isSubmitting}
+            >
+              <Plus size={14} strokeWidth={3} />
+              <span className="pl-1">Add new subtask</span>
+            </Button>
+          </ul>
+        </div>
         <FormField
           control={form.control}
           name="status"
@@ -142,7 +230,7 @@ const TodoForm = () => {
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a todo status" />
+                    <SelectValue placeholder="Select a todo label" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -167,7 +255,7 @@ const TodoForm = () => {
           render={({ field }) => (
             <FormItem className="flex">
               <FormLabel className="min-w-32 mt-5">Deadline</FormLabel>
-              <Popover>
+              <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
@@ -178,7 +266,7 @@ const TodoForm = () => {
                       )}
                     >
                       {field.value ? (
-                        new Intl.DateTimeFormat('en-US').format(field.value)
+                        formatCalendarDate(field.value)
                       ) : (
                         <span>Pick a date</span>
                       )}
@@ -191,8 +279,8 @@ const TodoForm = () => {
                     mode="single"
                     selected={field.value}
                     onSelect={(e) => {
+                      setCalendarOpen(false);
                       field.onChange(e);
-                      console.log(e);
                     }}
                     disabled={(date) => date < new Date('1900-01-01')}
                     initialFocus
@@ -204,7 +292,9 @@ const TodoForm = () => {
           )}
         />
         <div className="flex justify-end pt-4">
-          <Button type="submit">Save</Button>
+          <Button className="px-8" type="submit">
+            Save
+          </Button>
         </div>
       </form>
     </Form>
