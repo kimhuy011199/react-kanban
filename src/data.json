@@ -33,7 +33,7 @@
         "label": "Design",
         "title": "Create landing page mockup",
         "description": "Design a visually appealing mockup for the landing page.",
-        "deadline": "25/04/2024",
+        "deadline": "04/25/2024",
         "status": "todo",
         "subtasks": [
           {
@@ -44,7 +44,7 @@
           {
             "id": "2",
             "title": "Select color palette",
-            "isCompleted": false
+            "isCompleted": true
           },
           {
             "id": "3",
@@ -58,7 +58,7 @@
         "label": "Development",
         "title": "Implement payment gateway",
         "description": "Integrate a payment gateway for processing online transactions.",
-        "deadline": "20/04/2024",
+        "deadline": "04/10/2024",
         "status": "todo",
         "subtasks": [
           {
@@ -108,7 +108,7 @@
         "label": "Development",
         "title": "Implement user feedback system",
         "description": "Integrate a system for collecting and processing user feedback.",
-        "deadline": "15/05/2024",
+        "deadline": "03/02/2024",
         "status": "todo",
         "subtasks": [
           {
@@ -129,7 +129,7 @@
         "label": "Development",
         "title": "Implement user authentication",
         "description": "Integrate OAuth for user authentication.",
-        "deadline": "15/04/2024",
+        "deadline": "04/15/2024",
         "status": "doing",
         "subtasks": [
           {
@@ -160,7 +160,7 @@
         "label": "Design",
         "title": "Revise UI mockups",
         "description": "Incorporate feedback from stakeholders and refine UI designs.",
-        "deadline": "25/04/2024",
+        "deadline": "04/25/2024",
         "status": "pending",
         "subtasks": [
           {
@@ -180,7 +180,7 @@
         "label": "Testing",
         "title": "Conduct usability testing",
         "description": "Test the application with real users to gather feedback.",
-        "deadline": "20/04/2024",
+        "deadline": "04/20/2024",
         "status": "pending",
         "subtasks": [
           {
