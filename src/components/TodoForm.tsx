@@ -69,33 +69,28 @@ const formSchema = z.object({
 });
 
 const defaultValues = {
-  title: 'Hello world',
-  description: 'Say something about this task',
-  subtasks: [
-    {
-      id: '1',
-      title: 'Hello sub-task',
-      isCompleted: false,
-    },
-  ],
+  title: '',
+  description: '',
+  subtasks: [],
   status: TODO_STATUS[0].value,
   label: TODO_BADGE_TYPE[0].value,
-  deadline: new Date('02/18/2024'),
+  deadline: new Date(),
 };
-// const defaultValues = {
-//   title: '',
-//   description: '',
-//   subtasks: [],
-//   status: TODO_STATUS[0].value,
-//   label: TODO_BADGE_TYPE[0].value,
-//   deadline: new Date(),
-// };
 
-const TodoForm = () => {
+export type TodoFormValuesType = z.infer<typeof formSchema>;
+
+const TodoForm = ({
+  formValues = defaultValues,
+  onSubmit,
+}: {
+  formValues?: any;
+  onSubmit: (values: TodoFormValuesType) => void;
+}) => {
+  console.log('formValues', formValues);
   const [calendarOpen, setCalendarOpen] = useState(false);
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<TodoFormValuesType>({
     resolver: zodResolver(formSchema),
-    defaultValues,
+    defaultValues: formValues,
   });
 
   const { fields, append, remove } = useFieldArray({
@@ -105,10 +100,6 @@ const TodoForm = () => {
   });
 
   const { isSubmitting } = form.formState;
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-  };
 
   return (
     <Form {...form}>

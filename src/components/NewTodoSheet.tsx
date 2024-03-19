@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import TodoForm from './TodoForm';
+import TodoForm, { TodoFormValuesType } from './TodoForm';
 import {
   Sheet,
   SheetContent,
@@ -10,6 +10,10 @@ import {
 } from './ui/sheet';
 
 const NewTodoSheet = ({ children }: { children: ReactNode }) => {
+  const handleCreateTask = (values: TodoFormValuesType) => {
+    console.log(values);
+  };
+
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -20,7 +24,7 @@ const NewTodoSheet = ({ children }: { children: ReactNode }) => {
             Create a new task here. Click save when you're done.
           </SheetDescription>
         </SheetHeader>
-        <TodoForm />
+        <TodoForm onSubmit={handleCreateTask} />
       </SheetContent>
     </Sheet>
   );

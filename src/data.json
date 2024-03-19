@@ -5,8 +5,8 @@
     "tasks": [
       {
         "id": "1",
-        "label": "Documentation",
-        "title": "Design settings and search pages",
+        "label": "documentation",
+        "title": "design settings and search pages",
         "description": "Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.",
         "deadline": "11/04/2024",
         "status": "todo",
@@ -30,9 +30,9 @@
       },
       {
         "id": "2",
-        "label": "Design",
+        "label": "design",
         "title": "Create landing page mockup",
-        "description": "Design a visually appealing mockup for the landing page.",
+        "description": "design a visually appealing mockup for the landing page.",
         "deadline": "04/25/2024",
         "status": "todo",
         "subtasks": [
@@ -55,7 +55,7 @@
       },
       {
         "id": "3",
-        "label": "Development",
+        "label": "development",
         "title": "Implement payment gateway",
         "description": "Integrate a payment gateway for processing online transactions.",
         "deadline": "04/10/2024",
@@ -80,7 +80,7 @@
       },
       {
         "id": "4",
-        "label": "Documentation",
+        "label": "documentation",
         "title": "Update API documentation",
         "description": "Revise and update the API documentation to include new endpoints and features.",
         "deadline": "05/05/2024",
@@ -105,7 +105,7 @@
       },
       {
         "id": "5",
-        "label": "Development",
+        "label": "development",
         "title": "Implement user feedback system",
         "description": "Integrate a system for collecting and processing user feedback.",
         "deadline": "03/02/2024",
@@ -113,7 +113,7 @@
         "subtasks": [
           {
             "id": "1",
-            "title": "Design feedback form",
+            "title": "design feedback form",
             "isCompleted": false
           }
         ]
@@ -126,7 +126,7 @@
     "tasks": [
       {
         "id": "1",
-        "label": "Development",
+        "label": "development",
         "title": "Implement user authentication",
         "description": "Integrate OAuth for user authentication.",
         "deadline": "04/15/2024",
@@ -157,7 +157,7 @@
     "tasks": [
       {
         "id": "1",
-        "label": "Design",
+        "label": "design",
         "title": "Revise UI mockups",
         "description": "Incorporate feedback from stakeholders and refine UI designs.",
         "deadline": "04/25/2024",
@@ -177,7 +177,7 @@
       },
       {
         "id": "2",
-        "label": "Testing",
+        "label": "testing",
         "title": "Conduct usability testing",
         "description": "Test the application with real users to gather feedback.",
         "deadline": "04/20/2024",
