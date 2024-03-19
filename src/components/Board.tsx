@@ -5,15 +5,10 @@ import {
   ColumnLabel,
 } from './Column';
 import { Badge } from './ui/badge';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import data from '../data.json';
 import DetailTodoSheet from './DetailTodoSheet';
+import SubtaskProgress from './SubtaskProgress';
 
 const Board = () => {
   console.log('data', data);
@@ -40,9 +35,9 @@ const Board = () => {
                       <CardTitle className="text-base font-medium">
                         {task.title}
                       </CardTitle>
-                      <CardDescription className="mt-1.5 text-xs">
-                        3 of 3 subtasks
-                      </CardDescription>
+                      <div className="mt-1.5 text-xs">
+                        <SubtaskProgress subtasks={task.subtasks} />
+                      </div>
                     </CardContent>
                   </Card>
                 </DetailTodoSheet>
