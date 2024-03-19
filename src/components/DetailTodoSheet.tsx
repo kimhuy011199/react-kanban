@@ -35,7 +35,9 @@ const DetailTodoSheet = ({
           <>
             <SheetHeader>
               <div className="flex justify-between items-center pr-8 text-base">
-                <Badge>{task.label}</Badge>
+                <Badge type={task.label as any} variant="outline">
+                  {task.label}
+                </Badge>
                 <div className="flex items-center gap-2">
                   <span className="uppercase font-semibold">{task.status}</span>
                   <Dot className="text-muted-foreground" />

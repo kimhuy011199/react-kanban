@@ -26,7 +26,13 @@ const Board = () => {
                 <DetailTodoSheet task={task}>
                   <Card>
                     <CardHeader className="flex flex-row justify-between items-center pt-4 px-3 pb-0 space-y-0">
-                      <Badge className="text-[10px]">{task.label}</Badge>
+                      <Badge
+                        variant="outline"
+                        type={task.label as any}
+                        className="text-[10px]"
+                      >
+                        {task.label}
+                      </Badge>
                       <span className="text-xs text-muted-foreground">
                         {task.deadline}
                       </span>
@@ -35,7 +41,7 @@ const Board = () => {
                       <CardTitle className="text-base font-medium">
                         {task.title}
                       </CardTitle>
-                      <div className="mt-1.5 text-xs">
+                      <div className="mt-4 text-xs">
                         <SubtaskProgress subtasks={task.subtasks} />
                       </div>
                     </CardContent>
