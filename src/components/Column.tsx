@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { twMerge } from 'tailwind-merge';
 
 const Column = ({ children, className, ...props }: any) => {
   return (
@@ -8,7 +9,7 @@ const Column = ({ children, className, ...props }: any) => {
   );
 };
 
-const ColumnLabel = ({ children, className, ...props }: any) => {
+const ColumnLabel = ({ children, className, color, ...props }: any) => {
   return (
     <span
       className={cn(
@@ -17,7 +18,7 @@ const ColumnLabel = ({ children, className, ...props }: any) => {
       )}
       {...props}
     >
-      <div className="w-3 h-3 bg-white rounded-full"></div>
+      <div className={twMerge('w-3 h-3 rounded-full', color)}></div>
       {children}
     </span>
   );

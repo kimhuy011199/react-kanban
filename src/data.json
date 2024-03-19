@@ -2,6 +2,7 @@
   {
     "id": "1",
     "type": "todo",
+    "color": "bg-cyan-500",
     "tasks": [
       {
         "id": "1",
@@ -123,6 +124,7 @@
   {
     "id": "2",
     "type": "doing",
+    "color": "bg-amber-500",
     "tasks": [
       {
         "id": "1",
@@ -149,10 +151,12 @@
   {
     "id": "3",
     "type": "done",
+    "color": "bg-green-500",
     "tasks": []
   },
   {
     "id": "4",
+    "color": "bg-violet-500",
     "type": "pending",
     "tasks": [
       {

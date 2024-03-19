@@ -7,6 +7,7 @@ module.exports = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
+  safelist: ['bg-amber-500', 'bg-cyan-500', 'bg-green-500', 'bg-violet-500'],
   prefix: '',
   theme: {
     fontFamily: {

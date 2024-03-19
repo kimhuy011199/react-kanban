@@ -17,7 +17,7 @@ const Board = () => {
     <div className="grid grid-cols-4 gap-6">
       {data.map((column) => (
         <Column key={column.id}>
-          <ColumnLabel>
+          <ColumnLabel color={column.color}>
             {column.type} ({column.tasks.length})
           </ColumnLabel>
           <ColumnContent>
