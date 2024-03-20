@@ -27,10 +27,9 @@ import {
   TODO_STATUS,
 } from '@/lib/constants';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
-import { cn } from '@/lib/utils';
+import { cn, formatCalendarDate } from '@/lib/utils';
 import { CalendarIcon, Plus, X } from 'lucide-react';
 import { Calendar } from './ui/calendar';
-import { formatCalendarDate } from '@/lib/format-date';
 
 const formSchema = z.object({
   title: z
@@ -84,9 +83,8 @@ const TodoForm = ({
   onSubmit,
 }: {
   formValues?: any;
-  onSubmit: (values: TodoFormValuesType) => void;
+  onSubmit: (values: TodoFormValuesType, id?: string) => void;
 }) => {
-  console.log('formValues', formValues);
   const [calendarOpen, setCalendarOpen] = useState(false);
   const form = useForm<TodoFormValuesType>({
     resolver: zodResolver(formSchema),
@@ -101,9 +99,17 @@ const TodoForm = ({
 
   const { isSubmitting } = form.formState;
 
+  const handleSubmitForm = (values: TodoFormValuesType) => {
+    const serializedDate = formatCalendarDate(values.deadline);
+    onSubmit({ ...values, deadline: serializedDate }, formValues?.id);
+  };
+
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 mt-4">
+      <form
+        onSubmit={form.handleSubmit(handleSubmitForm)}
+        className="space-y-2 mt-4"
+      >
         <FormField
           control={form.control}
           name="title"

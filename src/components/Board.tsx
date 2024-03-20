@@ -13,6 +13,7 @@ import SubtaskProgress from './SubtaskProgress';
 
 const Board = () => {
   const data = useSelector((state: RootState) => state.todo.data);
+  console.log('board data', data);
 
   return (
     <div className="grid grid-cols-4 gap-6">

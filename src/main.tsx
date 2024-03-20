@@ -8,12 +8,14 @@ import {
   ThemeProvider,
 } from './providers/theme-provider.tsx';
 import { store } from './store.ts';
+import { Toaster } from './components/ui/toaster.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider defaultTheme="dark" storageKey={THEME_STORAGE_KEY}>
         <App />
+        <Toaster />
       </ThemeProvider>
     </Provider>
   </React.StrictMode>

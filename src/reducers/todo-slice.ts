@@ -1,7 +1,6 @@
 import { TodoItem } from '@/lib/interface';
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { onInitData } from './todo-service';
+import { onSaveTask, onDeleteTask, onInitData } from './todo-service';
 
 export interface TodoState {
   data: TodoItem[];
@@ -16,9 +15,11 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     initData: (state, action) => onInitData(state, action),
+    saveTask: (state, action) => onSaveTask(state, action),
+    deleteTask: (state, action) => onDeleteTask(state, action),
   },
 });
 
-export const { initData } = todoSlice.actions;
+export const { initData, saveTask, deleteTask } = todoSlice.actions;
 
 export default todoSlice.reducer;

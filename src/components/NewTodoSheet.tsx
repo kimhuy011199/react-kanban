@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import TodoForm, { TodoFormValuesType } from './TodoForm';
 import {
   Sheet,
@@ -8,14 +8,26 @@ import {
   SheetTitle,
   SheetTrigger,
 } from './ui/sheet';
+import { useDispatch } from 'react-redux';
+import { saveTask } from '@/reducers/todo-slice';
+import { useToast } from './ui/use-toast';
 
 const NewTodoSheet = ({ children }: { children: ReactNode }) => {
+  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { toast } = useToast();
+
   const handleCreateTask = (values: TodoFormValuesType) => {
-    console.log(values);
+    dispatch(saveTask(values));
+    setOpen(false);
+    toast({
+      description: 'Created new task successfully',
+      icon: '✅',
+    });
   };
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent className="sm:max-w-[600px] overflow-y-scroll max-h-screen">
         <SheetHeader>
