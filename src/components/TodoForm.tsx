@@ -42,8 +42,8 @@ const formSchema = z.object({
     }),
   description: z
     .string()
-    .max(120, {
-      message: 'Description must not be longer than 120 characters.',
+    .max(150, {
+      message: 'Description must not be longer than 150 characters.',
     })
     .optional(),
   subtasks: z

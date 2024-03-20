@@ -7,7 +7,7 @@ interface MainProps {
 
 const Main = ({ currentView }: MainProps) => {
   return (
-    <div className="px-7 py-5 bg-muted">
+    <div className="px-7 py-5 bg-muted overflow-scroll board-area">
       {currentView === APP_VIEW.BOARD ? <Board /> : null}
       {currentView === APP_VIEW.TABLE ? <>Table</> : null}
     </div>

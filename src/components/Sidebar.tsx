@@ -17,7 +17,7 @@ interface SidebarProps {
 
 const Sidebar = ({ currentView, setCurrentView }: SidebarProps) => {
   return (
-    <div className="w-80 flex flex-col bg-card border-r">
+    <div className="w-full max-w-60 min-w-60 flex flex-col bg-card border-r">
       <Logo />
       <SidebarMenu>
         <SidebarMenuItem
