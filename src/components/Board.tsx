@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 import {
   Column,
   ColumnContent,
@@ -6,12 +8,11 @@ import {
 } from './Column';
 import { Badge } from './ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import data from '../data.json';
 import DetailTodoSheet from './DetailTodoSheet';
 import SubtaskProgress from './SubtaskProgress';
 
 const Board = () => {
-  console.log('data', data);
+  const data = useSelector((state: RootState) => state.todo.data);
 
   return (
     <div className="grid grid-cols-4 gap-6">
