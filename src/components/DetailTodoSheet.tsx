@@ -70,7 +70,7 @@ const DetailTodoSheet = ({
                   <ListTodo size={16} />
                   <span className="pl-2 font-semibold">Subtasks</span>
                 </div>
-                <SubtasksForm subtasks={task.subtasks} />
+                <SubtasksForm task={task} />
               </div>
             </div>
             <SheetFooter className="flex gap-2 mt-auto">

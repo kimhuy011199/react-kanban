@@ -1,23 +1,26 @@
-import { useState } from 'react';
-import { Subtask } from '@/lib/interface';
+import { useDispatch } from 'react-redux';
+import { Task } from '@/lib/interface';
 import { Checkbox } from './ui/checkbox';
 import { Label } from './ui/label';
 import { twMerge } from 'tailwind-merge';
+import { saveTask } from '@/reducers/todo-slice';
 
-const SubtasksForm = ({ subtasks }: { subtasks: Subtask[] }) => {
-  const [subtasksList, setSubtasksList] = useState([...subtasks]);
+const SubtasksForm = ({ task }: { task: Task }) => {
+  const dispatch = useDispatch();
 
-  const handleChangeSubtasks = (id: string) => {
-    const subtask = subtasksList.find((item) => item.id === id);
-    if (subtask) {
-      subtask.isCompleted = !subtask.isCompleted;
-    }
-    setSubtasksList([...subtasksList]);
+  const handleChangeSubtasks = (subtaskId: string) => {
+    const subtasks = task.subtasks.map((subtask) =>
+      subtask.id === subtaskId
+        ? { ...subtask, isCompleted: !subtask.isCompleted }
+        : subtask
+    );
+
+    dispatch(saveTask({ ...task, subtasks }));
   };
 
   return (
     <ul className="flex flex-col gap-2 mt-3">
-      {subtasksList.map((item) => (
+      {task.subtasks.map((item) => (
         <li key={item.id}>
           <div className="flex items-center bg-muted px-4 rounded-md hover:bg-secondary">
             <Checkbox
