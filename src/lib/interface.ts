@@ -17,5 +17,6 @@ export interface Task {
 export interface TodoItem {
   id: string;
   type: string;
+  color?: string;
   tasks: Task[];
 }
