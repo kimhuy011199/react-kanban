@@ -24,6 +24,10 @@ const EditTodoSheet = ({
     });
   };
 
+  const handleClose = () => {
+    setIsEditMode(false);
+  };
+
   return (
     <>
       <SheetHeader>
@@ -32,7 +36,11 @@ const EditTodoSheet = ({
           Update your task here. Click save when you're done.
         </SheetDescription>
       </SheetHeader>
-      <TodoForm formValues={task} onSubmit={handleEditTask} />
+      <TodoForm
+        formValues={task}
+        onSubmit={handleEditTask}
+        onCancel={handleClose}
+      />
     </>
   );
 };

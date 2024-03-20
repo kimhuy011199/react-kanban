@@ -81,9 +81,11 @@ export type TodoFormValuesType = z.infer<typeof formSchema>;
 const TodoForm = ({
   formValues = defaultValues,
   onSubmit,
+  onCancel,
 }: {
   formValues?: any;
   onSubmit: (values: TodoFormValuesType, id?: string) => void;
+  onCancel: () => void;
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const form = useForm<TodoFormValuesType>({
@@ -190,34 +192,39 @@ const TodoForm = ({
             </Button>
           </ul>
         </div>
-        <FormField
-          control={form.control}
-          name="status"
-          render={({ field }) => (
-            <FormItem className="flex">
-              <FormLabel className="min-w-32 mt-5">Status</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a todo status" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {TODO_STATUS.map((status) => (
-                    <SelectItem
-                      key={status.id}
-                      value={status.value}
-                      disabled={isSubmitting}
-                    >
-                      {status.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        {!formValues?.id ? (
+          <FormField
+            control={form.control}
+            name="status"
+            render={({ field }) => (
+              <FormItem className="flex">
+                <FormLabel className="min-w-32 mt-5">Status</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a todo status" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {TODO_STATUS.map((status) => (
+                      <SelectItem
+                        key={status.id}
+                        value={status.value}
+                        disabled={isSubmitting}
+                      >
+                        {status.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        ) : null}
         <FormField
           control={form.control}
           name="label"
@@ -288,8 +295,11 @@ const TodoForm = ({
             </FormItem>
           )}
         />
-        <div className="flex justify-end pt-4">
-          <Button className="px-8" type="submit">
+        <div className="flex justify-end pt-5 gap-3">
+          <Button variant="outline" type="button" onClick={onCancel}>
+            Cancel
+          </Button>
+          <Button className="px-6" type="submit">
             Save
           </Button>
         </div>

@@ -26,6 +26,10 @@ const NewTodoSheet = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -36,7 +40,7 @@ const NewTodoSheet = ({ children }: { children: ReactNode }) => {
             Create a new task here. Click save when you're done.
           </SheetDescription>
         </SheetHeader>
-        <TodoForm onSubmit={handleCreateTask} />
+        <TodoForm onSubmit={handleCreateTask} onCancel={handleClose} />
       </SheetContent>
     </Sheet>
   );
