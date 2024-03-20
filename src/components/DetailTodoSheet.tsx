@@ -25,10 +25,17 @@ const DetailTodoSheet = ({
   task: Task;
 }) => {
   const [isEditMode, setIsEditMode] = useState(false);
+  const [open, setOpen] = useState(false);
   const isMetDeadline = new Date(task.deadline) < new Date();
 
   return (
-    <Sheet>
+    <Sheet
+      open={open}
+      onOpenChange={(value) => {
+        setOpen(value);
+        setIsEditMode(false);
+      }}
+    >
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent className="sm:max-w-[600px] overflow-y-scroll max-h-screen flex flex-col">
         {!isEditMode ? (

@@ -8,14 +8,23 @@ const onInitData = (state: TodoState, action: AnyAction) => {
 
 const onSaveTask = (state: TodoState, action: AnyAction) => {
   const { payload } = action;
-  const id = uuidv4();
+  const id = payload?.id || uuidv4();
 
   const columnIndex = state.data.findIndex(
     (item) => item.type === payload.status
   );
 
   if (columnIndex !== -1) {
-    state.data[columnIndex].tasks.push({ ...payload, id });
+    if (!payload?.id) {
+      state.data[columnIndex].tasks.push({ ...payload, id });
+    } else {
+      const taskIndex = state.data[columnIndex].tasks.findIndex(
+        (item) => item.id === id
+      );
+      if (taskIndex !== -1) {
+        state.data[columnIndex].tasks[taskIndex] = { ...payload };
+      }
+    }
   }
 
   return state;

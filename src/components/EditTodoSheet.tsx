@@ -1,6 +1,9 @@
+import { useDispatch } from 'react-redux';
+import { useToast } from './ui/use-toast';
 import { Task } from '@/lib/interface';
 import TodoForm, { TodoFormValuesType } from './TodoForm';
 import { SheetDescription, SheetHeader, SheetTitle } from './ui/sheet';
+import { saveTask } from '@/reducers/todo-slice';
 
 const EditTodoSheet = ({
   task,
@@ -9,9 +12,16 @@ const EditTodoSheet = ({
   task: Task;
   setIsEditMode: (value: boolean) => void;
 }) => {
+  const { toast } = useToast();
+  const dispatch = useDispatch();
+
   const handleEditTask = (values: TodoFormValuesType) => {
-    console.log(values);
+    dispatch(saveTask({ ...values, id: task.id }));
     setIsEditMode(false);
+    toast({
+      description: 'Edited task successfully',
+      icon: '✅',
+    });
   };
 
   return (
