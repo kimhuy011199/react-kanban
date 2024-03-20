@@ -70,7 +70,11 @@ const DetailTodoSheet = ({
               <Button variant="secondary" onClick={() => setIsEditMode(true)}>
                 Edit
               </Button>
-              <DeleteTodoDialog title={task.title} id={task.id} />
+              <DeleteTodoDialog
+                title={task.title}
+                id={task.id}
+                type={task.status}
+              />
             </SheetFooter>
           </>
         ) : (

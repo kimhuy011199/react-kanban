@@ -22,7 +22,21 @@ const onSaveTask = (state: TodoState, action: AnyAction) => {
 };
 
 const onDeleteTask = (state: TodoState, action: AnyAction) => {
-  return { ...state, data: action.payload };
+  const { payload } = action;
+  const { id, type } = payload;
+
+  const columnIndex = state.data.findIndex((item) => item.type === type);
+
+  if (columnIndex !== -1) {
+    const taskIndex = state.data[columnIndex].tasks.findIndex(
+      (item) => item.id === id
+    );
+    if (taskIndex !== -1) {
+      state.data[columnIndex].tasks.splice(taskIndex, 1);
+    }
+  }
+
+  return state;
 };
 
 export { onInitData, onSaveTask, onDeleteTask };

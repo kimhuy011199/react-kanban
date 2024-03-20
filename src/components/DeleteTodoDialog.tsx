@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { Button } from './ui/button';
 import {
   Dialog,
@@ -9,10 +10,27 @@ import {
   DialogTitle,
   DialogTrigger,
 } from './ui/dialog';
+import { deleteTask } from '@/reducers/todo-slice';
+import { useToast } from './ui/use-toast';
 
-const DeleteTodoDialog = ({ title, id }: { title: string; id: string }) => {
+const DeleteTodoDialog = ({
+  title,
+  id,
+  type,
+}: {
+  title: string;
+  id: string;
+  type: string;
+}) => {
+  const dispatch = useDispatch();
+  const { toast } = useToast();
+
   const handleDeleteTask = async () => {
-    console.log('id', id);
+    dispatch(deleteTask({ id, type }));
+    toast({
+      description: 'Deleted task successfully',
+      icon: '✅',
+    });
   };
 
   return (
