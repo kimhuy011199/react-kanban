@@ -9,6 +9,12 @@ import {
 } from './providers/theme-provider.tsx';
 import { store } from './store.ts';
 import { Toaster } from './components/ui/toaster.tsx';
+import { saveState } from './lib/local-storage.ts';
+
+store.subscribe(() => {
+  const data = store.getState().todo.data;
+  saveState(data);
+});
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
