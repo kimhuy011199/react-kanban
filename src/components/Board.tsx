@@ -43,7 +43,7 @@ const Board = () => {
   };
 
   return (
-    <div className="grid grid-cols-4 gap-6 min-w-[1200px]">
+    <div className="grid grid-cols-4 gap-6 min-w-[1200px] max-w-screen-2xl">
       <DragDropContext onDragEnd={onDragEnd}>
         {data.map((column, columnIndex) => (
           <Column key={column.id}>
@@ -76,7 +76,9 @@ const Board = () => {
                                   type={task.label as any}
                                   className="text-[10px]"
                                 >
-                                  {task.label}
+                                  <span className="first-letter:uppercase">
+                                    {task.label}
+                                  </span>
                                 </Badge>
                                 <span className="text-xs text-muted-foreground">
                                   {task.deadline}

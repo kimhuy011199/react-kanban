@@ -1,4 +1,5 @@
 import { ArrowDown, ArrowRight, ArrowUp } from 'lucide-react';
+import { twMerge } from 'tailwind-merge';
 import { Badge } from './ui/badge';
 
 const TASK_PRIORITY_ICON = {
@@ -10,16 +11,29 @@ const TASK_PRIORITY_ICON = {
   low: { color: 'bg-green-500', icon: <ArrowDown size={12} strokeWidth={3} /> },
 } as any;
 
+export const PriorityItem = ({
+  priority,
+  className = '',
+}: {
+  priority: string;
+  className?: string;
+}) => {
+  const priorityObj = TASK_PRIORITY_ICON[priority];
+
+  return (
+    <div className={twMerge('flex items-center gap-1', className)}>
+      {priorityObj.icon}
+      <span className="first-letter:uppercase">{priority}</span>
+    </div>
+  );
+};
+
 const PriorityBadge = ({ priority }: { priority: string }) => {
   const priorityObj = TASK_PRIORITY_ICON[priority];
-  const icon = priorityObj.icon;
 
   return (
     <Badge className={`${priorityObj.color} hover:${priorityObj.color}`}>
-      <div className="flex items-center gap-1">
-        {icon}
-        <span>{priority}</span>
-      </div>
+      <PriorityItem priority={priority} />
     </Badge>
   );
 };

@@ -44,7 +44,7 @@ const DetailTodoSheet = ({
             <SheetHeader>
               <div className="flex justify-between items-center pr-8 text-base">
                 <Badge type={task.label as any} variant="outline">
-                  {task.label}
+                  <span className="first-letter:uppercase">{task.label}</span>
                 </Badge>
                 <div className="flex items-center gap-2">
                   <PriorityBadge priority={task.priority} />
