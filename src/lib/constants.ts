@@ -1,6 +1,3 @@
-import { ColumnDef } from '@tanstack/react-table';
-import { Task } from './interface';
-
 export const TODO_STATUS = [
   { id: 1, label: 'Todo', value: 'todo' },
   { id: 2, label: 'Doing', value: 'doing' },
@@ -19,21 +16,6 @@ export const TODO_PRIORITY = [
   { id: 1, label: 'High', value: 'high' },
   { id: 2, label: 'Normal', value: 'normal' },
   { id: 3, label: 'Low', value: 'low' },
-];
-
-export const TABLE_COLUMNS: ColumnDef<Task>[] = [
-  {
-    accessorKey: 'status',
-    header: 'Status',
-  },
-  {
-    accessorKey: 'title',
-    header: 'Title',
-  },
-  {
-    accessorKey: 'priority',
-    header: 'Priority',
-  },
 ];
 
 export const LIMITED_SUBTASKS = 7;

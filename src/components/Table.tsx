@@ -12,8 +12,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { TABLE_COLUMNS } from '../lib/constants';
 import { RootState } from '@/store';
+import { TABLE_COLUMNS } from './TableColumn';
 
 const TableView = () => {
   const data = useSelector((state: RootState) => state.todo.data);
@@ -25,23 +25,21 @@ const TableView = () => {
   });
 
   return (
-    <div className="rounded-md border">
+    <div className="rounded-md bg-background text-foreground border min-w-[1200px] max-w-screen-2xl">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                );
-              })}
+              {headerGroup.headers.map((header) => (
+                <TableHead key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                </TableHead>
+              ))}
             </TableRow>
           ))}
         </TableHeader>
