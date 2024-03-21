@@ -16,6 +16,7 @@ import SubtasksForm from './SubtasksForm';
 import DeleteTodoDialog from './DeleteTodoDialog';
 import { Button } from './ui/button';
 import EditTodoSheet from './EditTodoSheet';
+import PriorityBadge from './PriorityBadge';
 
 const DetailTodoSheet = ({
   children,
@@ -46,6 +47,8 @@ const DetailTodoSheet = ({
                   {task.label}
                 </Badge>
                 <div className="flex items-center gap-2">
+                  <PriorityBadge priority={task.priority} />
+                  <Dot className="text-muted-foreground" />
                   <span className="uppercase font-semibold">{task.status}</span>
                   <Dot className="text-muted-foreground" />
                   <div

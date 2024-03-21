@@ -12,4 +12,10 @@ export const TODO_BADGE_TYPE = [
   { id: 4, label: 'Documentation', value: 'documentation' },
 ];
 
+export const TODO_PRIORITY = [
+  { id: 1, label: 'High', value: 'high' },
+  { id: 2, label: 'Normal', value: 'normal' },
+  { id: 3, label: 'Low', value: 'low' },
+];
+
 export const LIMITED_SUBTASKS = 7;

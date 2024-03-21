@@ -24,6 +24,7 @@ import {
 import {
   LIMITED_SUBTASKS,
   TODO_BADGE_TYPE,
+  TODO_PRIORITY,
   TODO_STATUS,
 } from '@/lib/constants';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
@@ -64,6 +65,7 @@ const formSchema = z.object({
     .optional(),
   status: z.string(),
   label: z.string(),
+  priority: z.string(),
   deadline: z.any(),
 });
 
@@ -73,6 +75,7 @@ const defaultValues = {
   subtasks: [],
   status: TODO_STATUS[0].value,
   label: TODO_BADGE_TYPE[0].value,
+  priority: TODO_PRIORITY[1].value,
   deadline: new Date(),
 };
 
@@ -245,6 +248,34 @@ const TodoForm = ({
                       disabled={isSubmitting}
                     >
                       {badge.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="priority"
+          render={({ field }) => (
+            <FormItem className="flex">
+              <FormLabel className="min-w-32 mt-5">Label</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a todo priority" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {TODO_PRIORITY.map((priority) => (
+                    <SelectItem
+                      key={priority.id}
+                      value={priority.value}
+                      disabled={isSubmitting}
+                    >
+                      {priority.label}
                     </SelectItem>
                   ))}
                 </SelectContent>

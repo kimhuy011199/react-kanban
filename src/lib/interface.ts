@@ -11,6 +11,7 @@ export interface Task {
   description: string;
   deadline: string;
   status: string;
+  priority: string;
   subtasks: Subtask[];
 }
 

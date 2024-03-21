@@ -11,6 +11,7 @@
         "description": "Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.",
         "deadline": "11/04/2024",
         "status": "todo",
+        "priority": "low",
         "subtasks": [
           {
             "id": "8bf0bbac-f8fb-4bb3-920a-80abae239b4b",
@@ -36,6 +37,7 @@
         "description": "design a visually appealing mockup for the landing page.",
         "deadline": "04/25/2024",
         "status": "todo",
+        "priority": "high",
         "subtasks": [
           {
             "id": "82e23c0e-4db1-427f-80c0-c9d5bbe96f2d",
@@ -61,6 +63,7 @@
         "description": "Integrate a payment gateway for processing online transactions.",
         "deadline": "04/10/2024",
         "status": "todo",
+        "priority": "normal",
         "subtasks": [
           {
             "id": "d71ffec6-9d35-4a98-88b2-aa3d2f8a6f48",
@@ -86,6 +89,7 @@
         "description": "Revise and update the API documentation to include new endpoints and features.",
         "deadline": "05/05/2024",
         "status": "todo",
+        "priority": "high",
         "subtasks": [
           {
             "id": "56a5a80b-7c4a-4d48-8010-fe2f10a52759",
@@ -111,6 +115,7 @@
         "description": "Integrate a system for collecting and processing user feedback.",
         "deadline": "03/02/2024",
         "status": "todo",
+        "priority": "high",
         "subtasks": [
           {
             "id": "4071ffbf-de9d-46fe-9137-b54d18b5469f",
@@ -133,6 +138,7 @@
         "description": "Integrate OAuth for user authentication.",
         "deadline": "04/15/2024",
         "status": "doing",
+        "priority": "low",
         "subtasks": [
           {
             "id": "9505c396-ed00-4c90-affc-878389c43705",
@@ -166,6 +172,7 @@
         "description": "Incorporate feedback from stakeholders and refine UI designs.",
         "deadline": "04/25/2024",
         "status": "pending",
+        "priority": "normal",
         "subtasks": [
           {
             "id": "c92bb9ba-193c-4d04-93be-44885357c4d4",
@@ -186,6 +193,7 @@
         "description": "Test the application with real users to gather feedback.",
         "deadline": "04/20/2024",
         "status": "pending",
+        "priority": "high",
         "subtasks": [
           {
             "id": "5bc24f33-9edc-43fa-a62b-8e3e26c06ca9",
