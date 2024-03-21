@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './App.tsx';
@@ -17,12 +16,10 @@ store.subscribe(() => {
 });
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider defaultTheme="dark" storageKey={THEME_STORAGE_KEY}>
-        <App />
-        <Toaster />
-      </ThemeProvider>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <ThemeProvider defaultTheme="dark" storageKey={THEME_STORAGE_KEY}>
+      <App />
+      <Toaster />
+    </ThemeProvider>
+  </Provider>
 );

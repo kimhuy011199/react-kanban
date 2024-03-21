@@ -1,3 +1,4 @@
+import React from 'react';
 import { cn } from '@/lib/utils';
 import { twMerge } from 'tailwind-merge';
 
@@ -24,20 +25,28 @@ const ColumnLabel = ({ children, className, color, ...props }: any) => {
   );
 };
 
-const ColumnContent = ({ children, className, ...props }: any) => {
-  return (
-    <ul className={cn('flex flex-col gap-2', className)} {...props}>
-      {children}
-    </ul>
-  );
-};
+const ColumnContent = React.forwardRef<any, any>(
+  ({ children, className, ...props }: any, ref) => {
+    return (
+      <ul className={cn('min-h-60', className)} ref={ref} {...props}>
+        {children}
+      </ul>
+    );
+  }
+);
 
-const ColumnContentItem = ({ children, className, ...props }: any) => {
-  return (
-    <li className={cn('flex flex-col gap-2', className)} {...props}>
-      {children}
-    </li>
-  );
-};
+const ColumnContentItem = React.forwardRef<any, any>(
+  ({ children, className, ...props }: any, ref) => {
+    return (
+      <li
+        className={cn('flex flex-col gap-2 mb-3', className)}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </li>
+    );
+  }
+);
 
 export { Column, ColumnLabel, ColumnContent, ColumnContentItem };
