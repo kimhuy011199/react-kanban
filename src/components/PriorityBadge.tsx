@@ -15,7 +15,7 @@ const PriorityBadge = ({ priority }: { priority: string }) => {
   const icon = priorityObj.icon;
 
   return (
-    <Badge className={priorityObj.color}>
+    <Badge className={`${priorityObj.color} hover:${priorityObj.color}`}>
       <div className="flex items-center gap-1">
         {icon}
         <span>{priority}</span>
