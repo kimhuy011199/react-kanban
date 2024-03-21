@@ -1,9 +1,10 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { Task } from '@/lib/interface';
 import { twMerge } from 'tailwind-merge';
-import { Flame } from 'lucide-react';
+import { Eye, Flame } from 'lucide-react';
 import { PriorityItem } from './PriorityBadge';
 import { Badge } from './ui/badge';
+import DetailTodoSheet from './DetailTodoSheet';
 
 export const TABLE_COLUMNS: ColumnDef<Task>[] = [
   {
@@ -19,6 +20,16 @@ export const TABLE_COLUMNS: ColumnDef<Task>[] = [
           </Badge>
           <span>{title}</span>
         </div>
+      );
+    },
+  },
+  {
+    id: 'actions',
+    cell: ({ row }) => {
+      return (
+        <DetailTodoSheet task={row.original}>
+          <Eye size={18} className="cursor-pointer text-muted-foreground" />
+        </DetailTodoSheet>
       );
     },
   },
