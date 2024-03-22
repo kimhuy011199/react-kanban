@@ -18,18 +18,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { RootState } from '@/store';
 import { TABLE_COLUMNS } from './TableColumn';
 import { flattenTodo } from '@/lib/utils';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
-import { GanttChart } from 'lucide-react';
+import TableViewOptions from './TableViewOptions';
+import TableFilter from './TableFilter';
 
 const TableView = () => {
   const data = useSelector((state: RootState) => state.todo.data);
@@ -57,40 +50,8 @@ const TableView = () => {
   return (
     <>
       <div className="min-w-[1080px] max-w-screen-2xl flex justify-between items-center pb-4">
-        <div className="flex items-center">
-          <Input
-            placeholder="Filter tasks..."
-            value={(table.getColumn('title')?.getFilterValue() as string) ?? ''}
-            onChange={(event) =>
-              table.getColumn('title')?.setFilterValue(event.target.value)
-            }
-            className="w-80"
-          />
-        </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="flex gap-2">
-              <GanttChart size={18} />
-              <span>View</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => (
-                <DropdownMenuCheckboxItem
-                  key={column.id}
-                  disabled={column.id === 'title'}
-                  className="capitalize"
-                  checked={column.getIsVisible()}
-                  onCheckedChange={(value) => column.toggleVisibility(!!value)}
-                >
-                  {column.id}
-                </DropdownMenuCheckboxItem>
-              ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <TableFilter table={table} />
+        <TableViewOptions table={table} />
       </div>
       <div className="rounded-md bg-background text-foreground border min-w-[1080px] max-w-screen-2xl">
         <Table>
