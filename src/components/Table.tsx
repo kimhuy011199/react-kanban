@@ -14,18 +14,21 @@ import {
 } from '@/components/ui/table';
 import { RootState } from '@/store';
 import { TABLE_COLUMNS } from './TableColumn';
+import { flattenTodo } from '@/lib/utils';
+import { useMemo } from 'react';
 
 const TableView = () => {
   const data = useSelector((state: RootState) => state.todo.data);
+  const flattenData = useMemo(() => flattenTodo(data), [data]);
 
   const table = useReactTable({
-    data: data[0].tasks,
+    data: flattenData,
     columns: TABLE_COLUMNS,
     getCoreRowModel: getCoreRowModel(),
   });
 
   return (
-    <div className="rounded-md bg-background text-foreground border min-w-[1200px] max-w-screen-2xl">
+    <div className="rounded-md bg-background text-foreground border min-w-[1080px] max-w-screen-2xl">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
