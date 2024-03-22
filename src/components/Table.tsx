@@ -1,7 +1,10 @@
+import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
+  SortingState,
   flexRender,
   getCoreRowModel,
+  getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
 import {
@@ -15,16 +18,21 @@ import {
 import { RootState } from '@/store';
 import { TABLE_COLUMNS } from './TableColumn';
 import { flattenTodo } from '@/lib/utils';
-import { useMemo } from 'react';
 
 const TableView = () => {
   const data = useSelector((state: RootState) => state.todo.data);
   const flattenData = useMemo(() => flattenTodo(data), [data]);
+  const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
     data: flattenData,
     columns: TABLE_COLUMNS,
     getCoreRowModel: getCoreRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
+    state: {
+      sorting,
+    },
   });
 
   return (

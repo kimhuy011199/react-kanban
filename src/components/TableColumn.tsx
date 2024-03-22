@@ -5,11 +5,14 @@ import { Eye, Flame } from 'lucide-react';
 import { PriorityItem } from './PriorityBadge';
 import { Badge } from './ui/badge';
 import DetailTodoSheet from './DetailTodoSheet';
+import TableHeader from './TableHeader';
 
 export const TABLE_COLUMNS: ColumnDef<Task>[] = [
   {
     accessorKey: 'title',
-    header: 'Title',
+    header: ({ column }) => {
+      return <TableHeader column={column} title="Title" />;
+    },
     cell: ({ row }) => {
       const title = row.getValue('title') as string;
       const { label = '' } = row.original;
@@ -35,7 +38,9 @@ export const TABLE_COLUMNS: ColumnDef<Task>[] = [
   },
   {
     accessorKey: 'status',
-    header: 'Status',
+    header: ({ column }) => {
+      return <TableHeader column={column} title="Status" />;
+    },
     cell: ({ row }) => {
       const status = row.getValue('status') as string;
       return <div className="first-letter:uppercase">{status}</div>;
@@ -43,7 +48,9 @@ export const TABLE_COLUMNS: ColumnDef<Task>[] = [
   },
   {
     accessorKey: 'priority',
-    header: 'Priority',
+    header: ({ column }) => {
+      return <TableHeader column={column} title="Priority" />;
+    },
     cell: ({ row }) => {
       const priority = row.getValue('priority') as string;
       return <PriorityItem priority={priority} className="gap-2" />;
@@ -51,7 +58,9 @@ export const TABLE_COLUMNS: ColumnDef<Task>[] = [
   },
   {
     accessorKey: 'deadline',
-    header: 'Deadline',
+    header: ({ column }) => {
+      return <TableHeader column={column} title="Deadline" />;
+    },
     cell: ({ row }) => {
       const deadlineValue = row.getValue('deadline') as string;
       const isMetDeadline = new Date(deadlineValue) < new Date();
