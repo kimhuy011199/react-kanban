@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import {
   ColumnFiltersState,
   SortingState,
+  VisibilityState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
@@ -17,16 +18,25 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { RootState } from '@/store';
 import { TABLE_COLUMNS } from './TableColumn';
 import { flattenTodo } from '@/lib/utils';
 import { Input } from './ui/input';
+import { Button } from './ui/button';
+import { GanttChart } from 'lucide-react';
 
 const TableView = () => {
   const data = useSelector((state: RootState) => state.todo.data);
   const flattenData = useMemo(() => flattenTodo(data), [data]);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
   const table = useReactTable({
     data: flattenData,
@@ -36,16 +46,18 @@ const TableView = () => {
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
     state: {
       sorting,
       columnFilters,
+      columnVisibility,
     },
   });
 
   return (
     <>
-      <div className="min-w-[1080px] max-w-screen-2xl flex justify-between items-center">
-        <div className="flex items-center pb-4">
+      <div className="min-w-[1080px] max-w-screen-2xl flex justify-between items-center pb-4">
+        <div className="flex items-center">
           <Input
             placeholder="Filter tasks..."
             value={(table.getColumn('title')?.getFilterValue() as string) ?? ''}
@@ -55,7 +67,30 @@ const TableView = () => {
             className="w-80"
           />
         </div>
-        <div></div>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="flex gap-2">
+              <GanttChart size={18} />
+              <span>View</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {table
+              .getAllColumns()
+              .filter((column) => column.getCanHide())
+              .map((column) => (
+                <DropdownMenuCheckboxItem
+                  key={column.id}
+                  disabled={column.id === 'title'}
+                  className="capitalize"
+                  checked={column.getIsVisible()}
+                  onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                >
+                  {column.id}
+                </DropdownMenuCheckboxItem>
+              ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
       <div className="rounded-md bg-background text-foreground border min-w-[1080px] max-w-screen-2xl">
         <Table>
