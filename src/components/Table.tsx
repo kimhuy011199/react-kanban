@@ -54,7 +54,7 @@ const TableView = () => {
 
   return (
     <>
-      <div className="min-w-[1080px] max-w-screen-2xl flex justify-between items-center pb-4">
+      <div className="min-w-[1080px] max-w-screen-2xl flex justify-between items-center pb-4 gap-10">
         <TableFilter table={table} />
         <TableViewOptions table={table} />
       </div>
@@ -105,6 +105,9 @@ const TableView = () => {
             )}
           </TableBody>
         </Table>
+      </div>
+      <div className="mt-3 ml-2 text-muted-foreground text-sm">
+        Found: {table.getFilteredRowModel().rows.length} item(s)
       </div>
     </>
   );

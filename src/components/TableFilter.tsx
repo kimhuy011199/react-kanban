@@ -24,7 +24,7 @@ const TableFilter = ({ table }: DataTableToolbarProps<any>) => {
         onChange={(event) =>
           table.getColumn('title')?.setFilterValue(event.target.value)
         }
-        className="w-80"
+        className="w-60"
       />
       {table.getColumn('status') && (
         <TableFactedFilter
