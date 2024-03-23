@@ -14,23 +14,24 @@ import { deleteTask } from '@/reducers/todo-slice';
 import { useToast } from './ui/use-toast';
 
 const DeleteTodoDialog = ({
-  title,
   id,
   type,
+  callback,
 }: {
-  title: string;
   id: string;
   type: string;
+  callback: () => void;
 }) => {
   const dispatch = useDispatch();
   const { toast } = useToast();
 
-  const handleDeleteTask = async () => {
+  const handleDeleteTask = () => {
     dispatch(deleteTask({ id, type }));
     toast({
       description: 'Deleted task successfully',
       icon: '✅',
     });
+    callback();
   };
 
   return (
@@ -43,8 +44,8 @@ const DeleteTodoDialog = ({
           <DialogTitle>Delete this task?</DialogTitle>
         </DialogHeader>
         <DialogDescription>
-          {`Are you sure you want to delete the '${title}' task? This
-            action cannot be undone.`}
+          Are you sure you want to delete the this task? This action cannot be
+          undone.
         </DialogDescription>
         <DialogFooter>
           <DialogClose asChild>

@@ -81,9 +81,9 @@ const DetailTodoSheet = ({
                 Edit
               </Button>
               <DeleteTodoDialog
-                title={task.title}
                 id={task.id}
                 type={task.status}
+                callback={() => setOpen(false)}
               />
             </SheetFooter>
           </>
