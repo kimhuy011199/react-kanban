@@ -123,6 +123,53 @@
             "isCompleted": false
           }
         ]
+      },
+      {
+        "id": "task-0007",
+        "label": "testing",
+        "title": "Perform search functionality testing",
+        "description": "",
+        "deadline": "12/08/2024",
+        "status": "todo",
+        "priority": "low",
+        "subtasks": [
+          {
+            "id": "25b85bc7-4919-4c08-8df4-99dd1dca9576",
+            "title": "Create application testcases",
+            "isCompleted": false
+          },
+          {
+            "id": "b385b7de-7115-41c2-b499-419bb266f55d",
+            "title": "Run the test cases for searching feature",
+            "isCompleted": false
+          }
+        ]
+      },
+      {
+        "id": "task-0008",
+        "label": "development",
+        "title": "Implement filter tasks functionality",
+        "description": "Implement filter tasks functionality for status, deadline and priority in table view.",
+        "deadline": "07/12/2024",
+        "status": "todo",
+        "priority": "normal",
+        "subtasks": [
+          {
+            "id": "c248b5d5-58b0-42c1-ba58-8459c3badc5b",
+            "title": "Filter by status",
+            "isCompleted": false
+          },
+          {
+            "id": "5784dfaf-f87c-429b-b776-e1f66aa865e5",
+            "title": "Filter by deadline",
+            "isCompleted": false
+          },
+          {
+            "id": "526ade6e-1461-442d-8828-e146a1aabae8",
+            "title": "Filter by priority",
+            "isCompleted": false
+          }
+        ]
       }
     ]
   },
@@ -132,11 +179,32 @@
     "color": "bg-amber-500",
     "tasks": [
       {
-        "id": "task-0006",
+        "id": "task-0008",
+        "label": "documentation",
+        "title": "Update document for kanban project",
+        "description": "",
+        "deadline": "08/28/2024",
+        "status": "todo",
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": "7bf85327-f21e-4d45-8f76-32c0a5e91ebc",
+            "title": "Write table of content",
+            "isCompleted": true
+          },
+          {
+            "id": "0f669ed3-df7c-47a3-8811-c653d1f16d83",
+            "title": "Finalize the tech stack section",
+            "isCompleted": true
+          }
+        ]
+      },
+      {
+        "id": "task-0009",
         "label": "development",
         "title": "Implement user authentication",
         "description": "Integrate OAuth for user authentication.",
-        "deadline": "04/15/2024",
+        "deadline": "03/15/2024",
         "status": "doing",
         "priority": "low",
         "subtasks": [
@@ -153,7 +221,7 @@
         ]
       },
       {
-        "id": "task-0007",
+        "id": "task-0010",
         "label": "design",
         "title": "Create landing page mockup",
         "description": "Design a visually appealing mockup for the landing page.",
@@ -177,6 +245,32 @@
             "isCompleted": false
           }
         ]
+      },
+      {
+        "id": "task-0011",
+        "label": "testing",
+        "title": "Conduct regression testing",
+        "description": "Perform regression testing to ensure that recent changes have not adversely affected existing functionality.",
+        "deadline": "06/22/2024",
+        "status": "doing",
+        "priority": "low",
+        "subtasks": [
+          {
+            "id": "4fb7acea-a4a1-496b-aa35-017492e181d0",
+            "title": "Identify test cases",
+            "isCompleted": true
+          },
+          {
+            "id": "8037dba4-9184-47c5-923f-f044535c7ead",
+            "title": "Execute test cases",
+            "isCompleted": true
+          },
+          {
+            "id": "de98f8e3-5716-404a-bca7-5164358fef98",
+            "title": "Verify results",
+            "isCompleted": false
+          }
+        ]
       }
     ]
   },
@@ -192,11 +286,11 @@
     "type": "pending",
     "tasks": [
       {
-        "id": "task-0008",
+        "id": "task-0012",
         "label": "design",
         "title": "Revise UI mockups",
         "description": "Incorporate feedback from stakeholders and refine UI designs.",
-        "deadline": "04/25/2024",
+        "deadline": "09/25/2024",
         "status": "pending",
         "priority": "normal",
         "subtasks": [
@@ -213,11 +307,11 @@
         ]
       },
       {
-        "id": "task-0009",
+        "id": "task-0013",
         "label": "testing",
         "title": "Conduct usability testing",
         "description": "Test the application with real users to gather feedback.",
-        "deadline": "04/20/2024",
+        "deadline": "10/20/2024",
         "status": "pending",
         "priority": "high",
         "subtasks": [
@@ -232,6 +326,16 @@
             "isCompleted": false
           }
         ]
+      },
+      {
+        "id": "task-0014",
+        "label": "documentation",
+        "title": "Update user manual",
+        "description": "Revise and update the user manual to reflect recent changes and improvements.",
+        "deadline": "09/01/2024",
+        "status": "pending",
+        "priority": "low",
+        "subtasks": []
       }
     ]
   }

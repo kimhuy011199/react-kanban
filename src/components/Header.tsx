@@ -13,7 +13,7 @@ const Header = () => {
           Here's a list of your tasks for this month!
         </p>
       </div>
-      <div>
+      <div className="hidden md:block">
         <NewTodoSheet>
           <Button
             variant="secondary"
