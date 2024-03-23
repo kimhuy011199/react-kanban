@@ -51,6 +51,9 @@ export const TABLE_COLUMNS: ColumnDef<Task>[] = [
     header: ({ column }) => {
       return <TableHeader column={column} title="Status" />;
     },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
     cell: ({ row }) => {
       const status = row.getValue('status') as string;
       return <div className="first-letter:uppercase">{status}</div>;
@@ -60,6 +63,9 @@ export const TABLE_COLUMNS: ColumnDef<Task>[] = [
     accessorKey: 'priority',
     header: ({ column }) => {
       return <TableHeader column={column} title="Priority" />;
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
     },
     cell: ({ row }) => {
       const priority = row.getValue('priority') as string;
@@ -71,18 +77,22 @@ export const TABLE_COLUMNS: ColumnDef<Task>[] = [
     header: ({ column }) => {
       return <TableHeader column={column} title="Deadline" />;
     },
+    filterFn: (row, id, value) => {
+      const isMissDeadline = new Date(row.getValue(id)) < new Date();
+      return value.length > 1 || !!value[0] === isMissDeadline;
+    },
     cell: ({ row }) => {
       const deadlineValue = row.getValue('deadline') as string;
-      const isMetDeadline = new Date(deadlineValue) < new Date();
+      const isMissDeadline = new Date(deadlineValue) < new Date();
       return (
         <div
           className={twMerge(
             'flex items-center gap-2',
-            isMetDeadline ? 'text-destructive' : ''
+            isMissDeadline ? 'text-destructive' : ''
           )}
         >
           <span>{deadlineValue}</span>
-          {isMetDeadline ? <Flame size={16} /> : null}
+          {isMissDeadline ? <Flame size={16} /> : null}
         </div>
       );
     },

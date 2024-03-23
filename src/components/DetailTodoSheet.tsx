@@ -27,7 +27,7 @@ const DetailTodoSheet = ({
 }) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [open, setOpen] = useState(false);
-  const isMetDeadline = new Date(task.deadline) < new Date();
+  const isMissDeadline = new Date(task.deadline) < new Date();
 
   return (
     <Sheet
@@ -54,7 +54,7 @@ const DetailTodoSheet = ({
                   <div
                     className={twMerge(
                       'flex gap-2 items-center text-muted-foreground',
-                      isMetDeadline ? 'text-destructive' : ''
+                      isMissDeadline ? 'text-destructive' : ''
                     )}
                   >
                     <CalendarIcon size={14} />

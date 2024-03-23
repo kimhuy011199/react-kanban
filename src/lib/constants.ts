@@ -18,4 +18,9 @@ export const TODO_PRIORITY = [
   { id: 3, label: 'Low', value: 'low' },
 ];
 
+export const DEADLINE_FILTERING = [
+  { id: 1, value: '1', label: 'Miss deadline' },
+  { id: 2, value: '', label: 'Before deadline' },
+];
+
 export const LIMITED_SUBTASKS = 7;
