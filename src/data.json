@@ -1,11 +1,11 @@
 [
   {
-    "id": "1",
+    "id": "todo",
     "type": "todo",
     "color": "bg-cyan-500",
     "tasks": [
       {
-        "id": "6b82b99c-587a-4a6a-a0c3-b275305a86f0",
+        "id": "task-0001",
         "label": "design",
         "title": "Design settings and search pages",
         "description": "Design a visually appealing mockup for the settings and search pages.",
@@ -31,7 +31,7 @@
         ]
       },
       {
-        "id": "5e3535ca-5778-45a4-b89a-4de98da1400f",
+        "id": "task-0002",
         "label": "testing",
         "title": "Perform security testing",
         "description": "Conduct security testing to identify vulnerabilities and ensure data protection.",
@@ -52,7 +52,7 @@
         ]
       },
       {
-        "id": "38a98c92-0c02-4dda-b161-ad4714eec118",
+        "id": "task-0003",
         "label": "development",
         "title": "Implement payment gateway",
         "description": "Integrate a payment gateway for processing online transactions using Stripe.",
@@ -78,7 +78,7 @@
         ]
       },
       {
-        "id": "377e48be-1535-4735-a991-9e0ba19fc0d4",
+        "id": "task-0004",
         "label": "documentation",
         "title": "Update API documentation",
         "description": "Revise and update the API documentation to include new endpoints and features.",
@@ -109,7 +109,7 @@
         ]
       },
       {
-        "id": "5d2bfbda-b802-43b5-98bb-eec5012c48ae",
+        "id": "task-0005",
         "label": "development",
         "title": "Implement user feedback system",
         "description": "Integrate a system for collecting and processing user feedback.",
@@ -127,12 +127,12 @@
     ]
   },
   {
-    "id": "2",
+    "id": "doing",
     "type": "doing",
     "color": "bg-amber-500",
     "tasks": [
       {
-        "id": "885917c9-5508-4c9f-8b4a-8a6160b14fad",
+        "id": "task-0006",
         "label": "development",
         "title": "Implement user authentication",
         "description": "Integrate OAuth for user authentication.",
@@ -153,7 +153,7 @@
         ]
       },
       {
-        "id": "ea9faf0f-1e01-400a-a69d-e5a483ba96be",
+        "id": "task-0007",
         "label": "design",
         "title": "Create landing page mockup",
         "description": "Design a visually appealing mockup for the landing page.",
@@ -181,18 +181,18 @@
     ]
   },
   {
-    "id": "3",
+    "id": "done",
     "type": "done",
     "color": "bg-green-500",
     "tasks": []
   },
   {
-    "id": "4",
+    "id": "pending",
     "color": "bg-violet-500",
     "type": "pending",
     "tasks": [
       {
-        "id": "439e2522-d0a5-4ebd-b736-35ed3b9ed018",
+        "id": "task-0008",
         "label": "design",
         "title": "Revise UI mockups",
         "description": "Incorporate feedback from stakeholders and refine UI designs.",
@@ -213,7 +213,7 @@
         ]
       },
       {
-        "id": "bbbf72e1-62b7-40d8-b1eb-da86ea6b5dd8",
+        "id": "task-0009",
         "label": "testing",
         "title": "Conduct usability testing",
         "description": "Test the application with real users to gather feedback.",

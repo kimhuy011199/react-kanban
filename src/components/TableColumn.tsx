@@ -9,6 +9,16 @@ import TableHeader from './TableHeader';
 
 export const TABLE_COLUMNS: ColumnDef<Task>[] = [
   {
+    accessorKey: 'id',
+    header: ({ column }) => {
+      return <TableHeader column={column} title="Task" />;
+    },
+    cell: ({ row }) => {
+      const id = row.getValue('id') as string;
+      return <div className="uppercase">{id}</div>;
+    },
+  },
+  {
     accessorKey: 'title',
     header: ({ column }) => {
       return <TableHeader column={column} title="Title" />;

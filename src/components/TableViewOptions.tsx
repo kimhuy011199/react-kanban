@@ -24,7 +24,7 @@ const TableViewOptions = ({ table }: DataTableToolbarProps<any>) => {
           .map((column) => (
             <DropdownMenuCheckboxItem
               key={column.id}
-              disabled={column.id === 'title'}
+              disabled={column.id === 'id'}
               className="capitalize"
               checked={column.getIsVisible()}
               onCheckedChange={(value) => column.toggleVisibility(!!value)}

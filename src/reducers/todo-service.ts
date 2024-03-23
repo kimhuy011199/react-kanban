@@ -1,11 +1,28 @@
-import { v4 as uuidv4 } from 'uuid';
 import { AnyAction } from '@reduxjs/toolkit';
 import { TodoState } from './todo-slice';
+import { flattenTodo } from '@/lib/utils';
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
 // doesn't actually mutate the state because it uses the Immer library,
 // which detects changes to a "draft state" and produces a brand new
 // immutable state based off those changes
+
+const getNewTaskId = (state: TodoState) => {
+  const idLength = 4;
+  const taskIdPrefix = 'task-';
+
+  // Get the latest number
+  const latestId = flattenTodo(state.data).reduce((acc, cur) => {
+    const extractedId = cur.id.match(/\d+/)?.[0];
+    return extractedId ? Math.max(parseInt(extractedId, 10), acc) : 0;
+  }, 0);
+
+  // Increase number
+  const newId = latestId + 1;
+
+  // Return new id: 'task-000x'
+  return taskIdPrefix + newId.toString().padStart(idLength, '0');
+};
 
 const onInitData = (state: TodoState, action: AnyAction) => {
   return { ...state, data: action.payload };
@@ -13,7 +30,7 @@ const onInitData = (state: TodoState, action: AnyAction) => {
 
 const onSaveTask = (state: TodoState, action: AnyAction) => {
   const { payload } = action;
-  const id = payload?.id || uuidv4();
+  const id = payload?.id || getNewTaskId(state);
 
   // Get culumn index: 0 todo 1 doing 2 done 3 pending
   const columnIndex = state.data.findIndex(
