@@ -27,7 +27,12 @@ import TableFilter from './TableFilter';
 const TableView = () => {
   const data = useSelector((state: RootState) => state.todo.data);
   const flattenData = useMemo(() => flattenTodo(data), [data]);
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const [sorting, setSorting] = useState<SortingState>([
+    {
+      id: 'id',
+      desc: false,
+    },
+  ]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
