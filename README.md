@@ -1,30 +1,49 @@
-# React + TypeScript + Vite
+# Kanban Task Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Kanban is a robust todo management web application designed to streamline your task organization and productivity.
 
-Currently, two official plugins are available:
+Try [Kanban production version](https://react-kanban-webapp.netlify.app) for free!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![alt text](./images/board.png)
 
-## Expanding the ESLint configuration
+## Key Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Tasks Management**: Create, view, update, and delete tasks effortlessly, ensuring your to-do list is always up-to-date.
+- **Board View**: Tasks can be dragged and dropped across four columns - TODO, DOING, DONE, and PENDING, providing a clear visualization of task progress.
+- **Table View**: Access a comprehensive list of all tasks in a structured table format for quick reference and overview.
+  - **Search Functionality**: Easily search for specific tasks by their title.
+  - **Filtering Options**: Filter tasks based on status, priority, and deadline, enabling focused task management.
+  - **Sorting Capabilities**: Sort tasks by various criteria for improved organization.
+  - **View Columns**: Customize your viewing experience by toggling visibility of columns.
+- **Dark/Light Mode**: Switch between dark and light themes to suit your visual preferences.
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- React
+- Redux Toolkit
+- Typescript
+- TailwindCSS
+- ShadcnUI
+- TanStack Table
+
+## Getting Started
+
+1. Clone the repository:
+
+```
+git clone https://github.com/kimhuy011199/react-kanban
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Install dependencies:
+
+```
+npm install
+```
+
+3. Start the development server:
+
+```
+npm run dev
+```
+
+4. Access the application: Visit http://localhost:5173 in your web browser to start managing your tasks with Kanban.
