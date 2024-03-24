@@ -9,6 +9,7 @@ import {
 import ToggleMode from './ToggleMode';
 import { APP_VIEW } from '@/lib/enums';
 import NewTodoSheet from './NewTodoSheet';
+import AboutSheet from './About';
 
 interface SidebarProps {
   currentView: APP_VIEW;
@@ -46,12 +47,14 @@ const Sidebar = ({ currentView, setCurrentView }: SidebarProps) => {
             <SidebarMenuItemContent>Add new task</SidebarMenuItemContent>
           </SidebarMenuItem>
         </NewTodoSheet>
-        <SidebarMenuItem>
-          <SidebarMenuItemIcon>
-            <Book size={18} />
-          </SidebarMenuItemIcon>
-          <SidebarMenuItemContent>About</SidebarMenuItemContent>
-        </SidebarMenuItem>
+        <AboutSheet>
+          <SidebarMenuItem>
+            <SidebarMenuItemIcon>
+              <Book size={18} />
+            </SidebarMenuItemIcon>
+            <SidebarMenuItemContent>About</SidebarMenuItemContent>
+          </SidebarMenuItem>
+        </AboutSheet>
       </SidebarMenu>
       <ToggleMode />
     </div>

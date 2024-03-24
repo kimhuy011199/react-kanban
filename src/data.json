@@ -282,8 +282,8 @@
   },
   {
     "id": "pending",
-    "color": "bg-violet-500",
     "type": "pending",
+    "color": "bg-violet-500",
     "tasks": [
       {
         "id": "task-0012",
