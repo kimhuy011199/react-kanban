@@ -1,4 +1,4 @@
-const APP_STATE_KEY = 'kanban-app-state';
+const APP_STATE_KEY = 'kanban-app';
 
 export const loadState = () => {
   try {
