@@ -16,7 +16,7 @@ const AboutSheet = ({ children }: { children: ReactNode }) => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>{children}</SheetTrigger>
-      <SheetContent className="sm:max-w-[800px] overflow-y-scroll max-h-screen">
+      <SheetContent className="sm:max-w-[960px] overflow-y-scroll max-h-screen">
         <SheetHeader>
           <SheetTitle>About Kanban application</SheetTitle>
           <SheetDescription className="text-base">
@@ -89,7 +89,7 @@ const AboutSheet = ({ children }: { children: ReactNode }) => {
           </div>
           <div>
             <h3 className="font-semibold text-lg mb-2">Tech stack</h3>
-            <ul className="text-muted-foreground list-disc ml-4 grid grid-cols-2 gap-2">
+            <ul className="text-muted-foreground list-disc ml-4 grid grid-cols-3 gap-1">
               <li>React</li>
               <li>Redux Toolkit</li>
               <li>Typescript</li>
