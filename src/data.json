@@ -125,7 +125,7 @@
         ]
       },
       {
-        "id": "task-0007",
+        "id": "task-0006",
         "label": "testing",
         "title": "Perform search functionality testing",
         "description": "",
@@ -146,7 +146,7 @@
         ]
       },
       {
-        "id": "task-0008",
+        "id": "task-0007",
         "label": "development",
         "title": "Implement filter tasks functionality",
         "description": "Implement filter tasks functionality for status, deadline and priority in table view.",
